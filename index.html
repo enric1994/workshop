@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Workshop | Synthetic Data for Polyp Segmentation</title>
+    <link rel="stylesheet" href="slides/dist/reset.css">
+    <link rel="stylesheet" href="slides/dist/reveal.css">
+    <link rel="stylesheet" href="slides/dist/theme/white.css">
+    <link rel="stylesheet" href="slides/plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <section>
+                    <h2>Workshop on Synthetic Data for Polyp Segmentation</h2>
+                    <br>
+                    <br>
+                    <h5 style="text-align: left;">
+                        <img src="slides/icons/slides.png" alt="Slides Icon"
+                            style="vertical-align: middle; width: 20px; height: 20px;">
+                        <a href="https://workshop.enricmor.eu/" target="_blank"
+                            style="text-decoration: none;">workshop.enricmor.eu</a>
+                        <br>
+                        <img src="slides/icons/github.png" alt="GitHub Icon"
+                            style="vertical-align: middle; width: 20px; height: 20px;">
+                        <a href="https://github.com/enric1994/workshop" target="_blank"
+                            style="text-decoration: none;">github.com/enric1994/workshop</a>
+                    </h5> 
+                </section>
+                <!-- Day 1 -->
+                <section>
+                    <h2>Day 1</h2>
+                    <ol>
+                        <li>Introduction to synthetic data</li>
+                        <li>Blender basics</li>
+                        <li>3D-based synthetic data</li>
+                        <li>Polyp segmentation with synthetic data</li>
+                    </ol>
+                </section>
+            </section>
+            <section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/GTAV.jpg" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Wang, Qi, et al. "Learning from synthetic data
+                        for crowd counting in the wild." Proceedings of the IEEE/CVF conference on computer vision and
+                        pattern recognition. 2019.</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/GTAV.jpg" height="400">
+                        </div>
+                        <div>
+                            <img src="slides/images/crowd.jpg" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Wang, Qi, et al. "Learning from synthetic data
+                        for crowd counting in the wild." Proceedings of the IEEE/CVF conference on computer vision and
+                        pattern recognition. 2019.
+                        <br>
+                        <br>
+                        Sindagi, Vishwanath A., Rajeev Yasarla, and Vishal M. Patel. "Jhu-crowd++: Large-scale crowd
+                        counting dataset and a benchmark method." IEEE transactions on pattern analysis and machine
+                        intelligence. 2020.</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/nvidia-hand.png" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Makoviychuk, Viktor, et al. "Isaac gym: High
+                        performance gpu-based physics simulation for robot learning." arXiv preprint arXiv:2108.10470
+                        (2021)</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/nvidia-hand.png" height="400">
+                        </div>
+                        <div>
+                            <img src="slides/images/nvidia-hand.gif" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Makoviychuk, Viktor, et al. "Isaac gym: High
+                        performance gpu-based physics simulation for robot learning." arXiv preprint arXiv:2108.10470
+                        (2021)</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/supermarket.png" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Neurolabs: <a href="https://www.neurolabs.ai/"
+                            target="_blank">https://www.neurolabs.ai/</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/supermarket.png" height="400">
+                            <img src="slides/images/ariel.gif" height="200">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Neurolabs: <a href="https://www.neurolabs.ai/"
+                            target="_blank">https://www.neurolabs.ai/</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/sora.gif" height="400">
+                        </div>
+                        <div>
+                            <img src="slides/images/sora2.gif" height="400">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">OpenAI Sora: <a href="https://openai.com/sora/"
+                            target="_blank">https://openai.com/sora/</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Synthetic data</h2>
+                    <ul>
+                        <li class="fragment">Unlimited</li>
+                        <li class="fragment">Perfectly annotated</li>
+                        <li class="fragment">Balanced distribution</li>
+                        <li class="fragment">Doesn't contain sensitive information</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section data-auto-animate>
+                    <h2>Blender basics</h2>
+                </section>
+                <section data-auto-animate>
+                    <h2>Blender basics</h2>
+                    <pre data-id="code-animation"><code class="hljs python" data-trim data-line-numbers="|1|3,4,5|7,8,9|11,12,13|15,16,17|19,20|21,22,23,24,25,26" style="font-size: 0.6em;">
+import bpy
+# Delete all objects
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete()
+# Add a cube
+bpy.ops.mesh.primitive_cube_add(location=(0,4,0), rotation=(0, 0, 0.7))
+cube = bpy.context.active_object
+# Add a material
+cube.active_material = bpy.data.materials.new(name="MaterialName")
+cube.active_material.diffuse_color = (1, 0, 0, 1)
+# Add a camera
+bpy.ops.object.camera_add(location=(0, -50, 0), rotation=(3.14 / 2, 0, 0))
+bpy.context.scene.camera = bpy.context.active_object
+# Add a light
+bpy.ops.object.light_add(type='SUN')
+# Render image
+bpy.context.scene.render.resolution_x = 100
+bpy.context.scene.render.resolution_y = 100
+bpy.context.scene.render.filepath = '/path/to/render.png'
+bpy.ops.render.render(write_still=True)
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h3>Task 1: Hello Blender</h3>
+                    <ul>
+                        <li>Create a dataset of 50 images</li>
+                        <li>Each image will contain red, green, and blue cubes</li>
+                        <li>The number of cubes of each color will be random</li>
+                        <li>The labels will be encoded in the filename:</li>
+                        <ul>
+                            <li>id_<span style="color: #FF0000;">red</span>_<span
+                                    style="color: #00FF00;">green</span>_<span style="color: #0000FF;">blue</span>.png
+                                <code>(0_<span style="color: #FF0000;">3</span>_<span style="color: #00FF00;">1</span>_<span style="color: #0000FF;">6</span>.png)</code>
+                            </li>
+                        </ul>
+                    </ul>
+                    <img src="slides/images/sample_dataset.png" height="200">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>3D-based synthetic data</h2>
+                    <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            3D environment
+                        </div>
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            3D model
+                        </div>
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            Background image
+                        </div>
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            Lighting and camera
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/3d_env.png" height="400">
+                            <p>3D environment</p>
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Community, B. O. (2018). Blender - a 3D
+                        modelling and rendering package. Stichting Blender Foundation, Amsterdam. Retrieved from <a
+                            href="http://www.blender.org" target="_blank">http://www.blender.org</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <iframe title="Little Blue Penguin / Kororā" frameborder="0" allowfullscreen
+                                mozallowfullscreen="true" webkitallowfullscreen="true"
+                                allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+                                execution-while-out-of-viewport execution-while-not-rendered web-share height="437"
+                                src="https://sketchfab.com/models/8a58020139cf43bc821bfdfa01e13208/embed?dnt=1">
+                            </iframe>
+                            <p>3D model</p>
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 42%;">Source: <a
+                            href="https://sketchfab.com/3d-models/little-blue-penguin-korora-8a58020139cf43bc821bfdfa01e13208"
+                            target="_blank">Sketchfab</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <iframe src="https://clara.io/library" width="100%" height="600px" frameborder="0"
+                        allowfullscreen></iframe>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/background.png" height="400">
+                            <p>Background image</p>
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Zhou, B., Lapedriza, A., Khosla, A., Oliva, A.,
+                        & Torralba, A. (2017). <a href="http://places2.csail.mit.edu/index.html" target="_blank">Places:
+                            A 10 million Image Database for Scene Recognition.</a><em> IEEE Transactions on Pattern
+                            Analysis and Machine Intelligence.</em></cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <iframe src="http://places.csail.mit.edu/" width="100%" height="600px" frameborder="0"
+                        allowfullscreen></iframe>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <img src="slides/images/people1.png" height="400">
+                    <p>Lighting and camera parameters</p>
+                </section>
+                <section data-auto-animate>
+                    <h2>3D-based synthetic data</h2>
+                    <pre data-id="code-animation"><code class="hljs python" data-trim data-line-numbers="|7-12|21-37|45-56" style="font-size: 0.6em;">
+import bpy
+# Delete all objects
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete()
+# Import the model in FBX format
+bpy.ops.import_scene.fbx(filepath="/path/to/model.fbx")
+imported_object = bpy.context.selected_objects[0]
+imported_object.location = (0, 0, 0)
+imported_object.rotation_euler = (0, 0, 0)
+imported_object.scale = (4, 4, 4)
+# Add a camera
+bpy.ops.object.camera_add(location=(0, -50, 0), rotation=(3.14 / 2, 0, 0))
+bpy.context.scene.camera = bpy.context.active_object
+# Add a light
+bpy.ops.object.light_add(type='SUN', location=(0, 0, 0), rotation=(0, 0, 0))
+# Background plane
+bpy.ops.mesh.primitive_plane_add(size=2, location=(0, 60, 0), rotation=(3.14/2, 0, 0))
+plane = bpy.context.active_object
+plane.scale = (120, 120, 120)
+mat = bpy.data.materials.new("BGMaterial")
+mat.use_nodes = True
+nodes = mat.node_tree.nodes
+links = mat.node_tree.links
+for node in nodes:
+    nodes.remove(node)
+tex_node = nodes.new("ShaderNodeTexImage")
+emit_node = nodes.new("ShaderNodeEmission")
+out_node = nodes.new("ShaderNodeOutputMaterial")
+tex_node.image = bpy.data.images.load("/path/to/background.png")
+links.new(tex_node.outputs["Color"], emit_node.inputs["Color"])
+links.new(emit_node.outputs["Emission"], out_node.inputs["Surface"])
+plane.data.materials.append(mat)
+# Render image
+bpy.context.scene.render.resolution_x = 256
+bpy.context.scene.render.resolution_y = 256
+bpy.context.scene.render.filepath = "/path/to/render.png"
+bpy.ops.render.render(write_still=True)
+# Remove orphan data
+for block in bpy.data.meshes:
+    if block.users == 0:
+        bpy.data.meshes.remove(block)
+for block in bpy.data.materials:
+    if block.users == 0:
+        bpy.data.materials.remove(block)
+for block in bpy.data.images:
+    if block.users == 0:
+        bpy.data.images.remove(block)
+                                            </code></pre>
+                </section>
+                <section>
+                    <h3>Task 2: Savanna dataset</h3>
+                    <ul>
+                        <li>Create a dataset of 30 images</li>
+                        <li>Each image will contain animals of the same type</li>
+                        <li>The labels will be encoded in the filename:</li>
+                        <ul>
+                            <li>id_<span style="color: #0000FF;">animal</span>.png
+                                <code>(0_<span style="color: #0000FF;">lion</span>.png)</code>
+                            </li>
+                        </ul>
+                    </ul>
+                    <img src="slides/images/savanna.png" height="256">
+                    <p>Use the provided <a href="https://drive.google.com/file/d/1v2et75VvL1OTj2C79qpnneVY-O5PUxcK/view?usp=sharing">backgrounds</a> and <a href="https://drive.google.com/file/d/1SF07c6ms3Vcajm0kFn0CQFxseqHC4rqd/view?usp=sharing">3D
+                            models</a></p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Training a classifier with synthetic data</h2>
+                <p><a href="https://drive.google.com/file/d/1sGEv5vbsuaHOphSAVkg3oGCb5Pm7jRde/view?usp=sharing" target="_blank">Notebook</a></p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Training a segmentation model</h2>
+                    <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            Model
+                        </div>
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            Train data
+                        </div>
+                        <div
+                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                            Test data
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <embed src="slides/docs/sota.pdf" type="application/pdf" width="100%" height="600px" />
+                </section>
+                <section>
+                    <h2>Train data: Synth-colon</h2>
+                    <ul>
+                        <li>828 images</li>
+                        <li>256x256 pixels</li>
+                        <li>Generated with Blender</li>
+                    </ul>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/synth-colon-img.png" height="256">
+                        </div>
+                        <div>
+                            <img src="slides/images/synth-colon-mask.png" height="256">
+                        </div>
+                        <div style="height: 256px !important;">
+                            <script
+                                src="https://embed.github.com/view/3d/enric1994/workshop/main/slides/models/synth-colon.stl"></script>
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Enric Moreu, Kevin McGuinness, and Noel E
+                        O’Connor. “Synthetic Data
+                        for Unsupervised Polyp Segmentation”. In: Irish Conference on Artificial
+                        Intelligence and Cognitive Science (AICS). 2021.</cite>
+                </section>
+                <section>
+                    <h2>Test data: Kvasir-SEG</h2>
+                    <ul>
+                        <li>1000 images</li>
+                        <li>various sizes</li>
+                        <li>Each image contains 1 polyp</li>
+                        <li>Collected and annotated by medical professionals</li>
+                    </ul>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/kvasir-img.jpg" height="256">
+                        </div>
+                        <div>
+                            <img src="slides/images/kvasir-mask.jpg" height="256">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Jha, Debesh, et al. "Kvasir-seg: A segmented polyp dataset." MultiMedia modeling: 26th international conference, MMM 2020, Daejeon, South Korea, January 5–8, 2020, proceedings, part II 26. Springer International Publishing, 2020.</cite>
+                </section>
+                <section>
+                    <h3>Task 3: Synthetic polyp segmentation</h3>
+                    <p>Improve the following components:</p>
+                    <ul>
+                        <li>Model</li>
+                        <li>Loss function</li>
+                        <li>Optimizer</li>
+                    </ul>
+                    <p><a href="https://drive.google.com/file/d/1SRRx_j_4pk98PLF3rUX6owI2r42nea3E/view?usp=sharing" target="_blank">Notebook</a></p>
+                </section>
+            </section>
+            <!-- Day 2 -->
+            <section>
+                <section data-auto-animate>
+                    <h2>Recap of Day 1</h2>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;">
+                        <div>
+                            <img src="slides/images/GTAV.jpg" alt="GTAV" height="200"
+                                style="border-radius: 50%; object-fit: cover; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Introduction to
+                                synthetic data</p>
+                        </div>
+                        <div>
+                            <img src="slides/images/sample_dataset.png" alt="Blender Dataset" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Hello Blender </p>
+                        </div>
+                        <div>
+                            <img src="slides/images/savanna.png" alt="Savanna Dataset" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna dataset</p>
+                        </div>
+                        <div>
+                            <img src="slides/images/synth-colon-img.png" alt="Synth Colon" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Synthetic polyp
+                                segmentation</p>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <h2>Recap of Day 1</h2>
+                    <br>
+                    <br>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/synth-colon-img.png" alt="Synth Colon" height="256">
+                        </div>
+                        <div style="font-size: 100px; display: flex; align-items: center; justify-content: center;">
+                            &rarr;
+                        </div>
+                        <div>
+                            <img src="slides/images/kvasir-img.jpg" alt="Kvasir-SEG" height="256">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Day 2</h2>
+                    <ol>
+                        <li>Domain randomization</li>
+                        <li>Domain adaptation</li>
+                        <li>Discussion</li>
+                    </ol>
+                </section>
+            </section>
+            <section data-auto-animate>
+                <section data-auto-animate>
+                    <h2 data-id="domain-randomization">Domain randomization</h2>
+                </section>
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <h2 data-id="domain-randomization">Domain randomization</h2>
+                    <div class="r-hstack justify-center">
+                        <div data-id="box1"
+                            style="border:solid; width: 200px; height: 200px; margin: 10px; border-radius: 400px; justify-content: center;">
+                            <div style="margin-top: 35%;">Synthetic
+                            </div>
+                        </div>
+                        <div><span style="font-size: 50px;">&#10230;</span>
+                        </div>
+                        <div data-id="box2"
+                            style="border: solid; width: 200px; height: 200px; margin: 10px; border-radius: 400px;">
+                            <div style="margin-top: 35%;">Real
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-duration="2.5"
+                    data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <h2 data-id="domain-randomization">Domain randomization</h2>
+                    <div class="r-stack">
+                        <div data-id="box1" style="border: solid; width: 500px; height: 500px; border-radius: 400px;">
+                            <div style="margin-top: 10%;">Synthetic
+                            </div>
+                        </div>
+                        <div data-id="box2" style="border: solid; width: 200px; height: 200px; border-radius: 400px;">
+                            <div style="margin-top: 35%;">Real
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <h2 data-id="domain-randomization">Domain randomization</h2>
+                    <img src="slides/images/people3.png" height="500">
+                </section>
+                <section>
+                    <embed src="slides/docs/dtd.pdf" width="100%" height="600" type="application/pdf">
+                </section>
+                <section>
+                    <h2>Data augmentation</h2>
+                    <img src="slides/images/da.jpg" height="500">
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Albumentations: <a
+                            href="https://albumentations.ai/" target="_blank">https://albumentations.ai/</a></cite>
+                </section>
+                <section>
+                    <embed src="https://explore.albumentations.ai/" width="100%" height="600" type="text/html">
+                </section>
+                <section>
+                    <embed src="slides/docs/dr.pdf" width="100%" height="600" type="application/pdf">
+                </section>
+                <section data-auto-animate>
+                    <h2>Style transfer</h2>
+                    <img src="slides/images/neural-style.png" height="500">
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Gatys, Leon A. "A neural algorithm of artistic
+                        style." arXiv preprint arXiv:1508.06576 (2015)</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Style transfer</h2>
+                    <br>
+                    <div style="border: solid; border-radius: 15px; padding: 10px;">
+                        <img src="slides/images/vgg.jpeg" height="300">
+                        <cite style="position:fixed; bottom: 1%; left: 1%;">Simonyan, Karen. "Very deep convolutional
+                            networks for large-scale image recognition." arXiv preprint arXiv:1409.1556 (2014).</cite>
+                    </div>
+                </section>
+                <section>
+                    <embed src="https://tensorspace.org/html/playground/inceptionv3.html" width="100%" height="600"
+                        type="text/html">
+                </section>
+                <section data-auto-animate data-background-video="slides/images/style_transfer.mp4"
+                    data-background-video-muted="true" data-background-video-loop="true" data-background-size="contain">
+                    <div style="
+                        position: absolute; 
+                        top: -350px; 
+                        left: 55%; 
+                        transform: translateX(-50%); 
+                    ">
+                        <h2>Style transfer</h2>
+                    </div>
+                </section>
+                <section>
+                    <h3>Task 4: Stylize the Savanna dataset</h3>
+                    <ul>
+                        <li>Try multiple styles</li>
+                        <li>Find a good balance between style and content</li>
+                    </ul>
+                    <p><a href="https://drive.google.com/file/d/1NrzJm1he1W8rh2IIGgV2QOH61JmJnxpa/view?usp=sharing" target="_blank">Notebook</a></p>
+                </section>
+            </section>
+            <!-- Domain adaptation -->
+            <section data-auto-animate>
+                <section data-auto-animate>
+                    <h2 data-id="domain-adaptation">Domain adaptation</h2>
+                </section>
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <h2 data-id="domain-adaptation">Domain adaptation</h2>
+                    <div class="r-hstack justify-center">
+                        <div data-id="box1"
+                            style="border:solid; width: 400px; height: 400px; margin: 10px; border-radius: 400px; justify-content: center;">
+                            <div style="margin-top: 45%;">Synthetic
+                            </div>
+                        </div>
+                        <div><span style="font-size: 50px;">&#10230;</span>
+                        </div>
+                        <div data-id="box2"
+                            style="border: solid; width: 400px; height: 400px; margin: 10px; border-radius: 400px;">
+                            <div style="margin-top: 45%;">Real
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <h2 data-id="domain-adaptation">Domain adaptation</h2>
+                    <div class="r-hstack">
+                        <div data-id="box1" style="border: solid; width: 500px; height: 500px; border-radius: 400px;">
+                        </div>
+                        <div data-id="box2"
+                            style="border: solid; width: 500px; height: 500px; border-radius: 400px; margin-left: -150px;">
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <h2 data-id="domain-adaptation">Domain adaptation</h2>
+                    <div class="r-vstack">
+                        <div>
+                            <img src="slides/images/da-synth.png" alt="DA Synthetic" height="256"
+                                style="display: block; margin: 0 auto;">
+                        </div>
+                        <div>
+                            <img src="slides/images/da-real.png" alt="DA Real" height="256"
+                                style="display: block; margin: 0 auto;">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Enric Moreu et al. “Self-Supervised and
+                        Semi-Supervised Polyp Segmentation
+                        using Synthetic Data”. International Joint Conference on Neural Networks
+                        (IJCNN) 2023.</cite>
+                </section>
+                <section data-auto-animate>
+                    <embed src="slides/docs/fda.pdf" width="100%" height="600" type="application/pdf">
+                </section>
+            </section>
+            <section>
+                <section data-auto-animate>
+                    <img src="slides/images/cukoo.jpg" height="500">
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Source: <a
+                            href="https://en.wikipedia.org/wiki/Cuckoo">Wikipedia</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/cukoo.jpg" height="500">
+                        </div>
+                        <div>
+                            <img src="slides/images/eggs.jpg" height="500">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Source: <a
+                            href="https://en.wikipedia.org/wiki/Cuckoo">Wikipedia</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/cukoo3.jpg" height="500">
+                        </div>
+                        <div>
+                            <img src="slides/images/cukoo2.jpg" height="500">
+                        </div>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Source: <a
+                            href="https://en.wikipedia.org/wiki/Egg_tossing_(behavior)">Wikipedia</a></cite>
+                </section>
+                <section data-auto-animate>
+                    <img src="slides/images/eggs3.png">
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Moskát, Csaba, et al. "Cuckoo parasitism on two
+                        closely-related Acrocephalus warblers in distant areas: a case of parallel coevolution?." Avian
+                        Research 3.4 (2012): 320-329.
+                    </cite>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Generative adversarial networks</h2>
+                    <canvas id="myAnimatedChart" width="800" height="400"></canvas>
+                </section>
+                <section data-auto-animate data-background-video="slides/images/gan.mp4"
+                    data-background-video-muted="true" data-background-video-loop="true" data-background-size="contain">
+                    <div style="
+                        position: absolute; 
+                        top: -350px; 
+                        left: 50%; 
+                        transform: translateX(-50%); 
+                        white-space: nowrap;
+                    ">
+                        <h2>Generative adversarial networks</h2>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Goodfellow, Ian, et al. "Generative adversarial
+                        nets." Advances in neural information processing systems 27. 2014.</cite>
+                </section>
+                <section>
+                    <h2>Generative adversarial networks</h2>
+                    <img src="slides/images/gan.png" height="500">
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Revi, Remya, K. R. Vidya, and M. Wilscy.
+                        "Detection of deepfake images created using generative adversarial networks: A review." Second
+                        International Conference on Networks and Advances in Computational Technologies: NetACT 19.
+                        Springer International Publishing, 2021.</cite>
+                </section>
+                <section>
+                    <h2>Generative adversarial networks</h2>
+                    <canvas id="myAnimatedChart2" width="800" height="400"></canvas>
+                </section>
+            </section>
+            <section>
+                <section data-background-video="slides/images/horse2zebra.mp4" data-background-video-muted="true"
+                    data-background-video-loop="true" data-background-size="contain">
+                    <div style="
+                        position: absolute; 
+                        top: -350px; 
+                        left: 50%; 
+                        transform: translateX(-50%); 
+                        white-space: nowrap;
+                    ">
+                        <h2>CycleGAN</h2>
+                    </div>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Zhu, Jun-Yan, et al. "Unpaired image-to-image
+                        translation using cycle-consistent adversarial networks." Proceedings of the IEEE international
+                        conference on computer vision 2017-Octob. 2017.</cite>
+                </section>
+                <section>
+                    <h2>CycleGAN</h2>
+                    <img src="slides/images/cyclegan.png" height="400">
+                    <br>
+                    <br>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Zhu, Jun-Yan, et al. "Unpaired image-to-image
+                        translation using cycle-consistent adversarial networks." Proceedings of the IEEE international
+                        conference on computer vision 2017-Octob. 2017.</cite>
+                </section>
+                <section>
+                    <h3>Task 5: Synthetic polyp segmentation with domain adaptation</h3>
+                    <ul>
+                        <li>Apply data augmentation to the train dataset</li>
+                        <li>Use the CycleGAN-adapted synthetic images</li>
+                    </ul>
+                    <div class="r-hstack">
+                        <div>
+                            <img src="slides/images/kvasir_1.png" height="200">
+                        </div>
+                        <div>
+                            <img src="slides/images/kvasir_2.png" height="200">
+                        </div>
+                        <div>
+                            <img src="slides/images/kvasir_3.png" height="200">
+                        </div>
+                        <div>
+                            <img src="slides/images/kvasir_4.png" height="200">
+                        </div>
+                    </div>
+                    <p><a href="https://drive.google.com/file/d/1jhV4YrQ9x1Zjtfext2xBtXfZ6sI_RnFb/view?usp=sharing" target="_blank">Notebook</a></p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Wrapping up</h2>
+                    <div class="image-grid"
+                        style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 0;">
+                        <div class="fragment">
+                            <img src="slides/images/belnder_ui.png" alt="Blender Logo" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Blender basics</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/savanna.png" alt="Savanna" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Pytorch introduction</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/people3.png" alt="Domain Randomization" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Domain randomization</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/da.jpg" alt="Data augmentation" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Data augmentation</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/starry_logo.png" alt="Starry Logo" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Style transfer</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/kvasir_4.png" alt="Domain adaptation" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Domain adaptation</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/eggs.jpg" alt="Generative Networks" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">Generative networks</p>
+                        </div>
+                        <div class="fragment">
+                            <img src="slides/images/zebra.jpeg" alt="CycleGAN" height="150" width="150"
+                                style="border-radius: 50%; margin-bottom: 0;">
+                            <p style="font-size: large; margin-top: 0;">CycleGAN</p>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate data-background-video="slides/images/video-colon.mp4"
+                    data-background-video-muted="true" data-background-video-loop="true" data-background-size="cover">
+                    <h1
+                        style="color: black; -webkit-text-fill-color: white; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: black;">
+                        Thank you</h1>
+                </section>
+            </section>
+            <!--  -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="slides/plugin/chart/plugin.js"></script>
+            <script>
+                let prev = 0;
+                let prev2 = 0;
+                const data = [];
+                const data2 = [];
+                function generateData(stuck) {
+                    let localPrev = 0;
+                    let localPrev2 = 0;
+                    const localData = [];
+                    const localData2 = [];
+                    for (let i = 0; i < 1000; i++) {
+                        if (i > stuck) {
+                            localPrev += 20 - (Math.random() * 43);
+                            localPrev2 += 20 - (Math.random() * 38);
+                        } else {
+                            localPrev += 20 - (Math.random() * 38);
+                            localPrev2 += 20 - (Math.random() * 38);
+                        }
+                        localData.push({ x: i, y: localPrev });
+                        localData2.push({ x: i, y: localPrev2 });
+                    }
+                    return { localData, localData2 };
+                }
+                const totalDuration = 40000;
+                const delayBetweenPoints = totalDuration / 1000;
+                const previousY = (ctx) =>
+                    ctx.index === 0
+                        ? ctx.chart.scales.y.getPixelForValue(100)
+                        : ctx.chart
+                            .getDatasetMeta(ctx.datasetIndex)
+                            .data[ctx.index - 1]
+                            .getProps(["y"], true).y;
+                const animation = {
+                    x: {
+                        type: "number",
+                        easing: "linear",
+                        duration: delayBetweenPoints,
+                        from: NaN,
+                        delay(ctx) {
+                            if (ctx.type !== "data" || ctx.xStarted) {
+                                return 0;
+                            }
+                            ctx.xStarted = true;
+                            return ctx.index * delayBetweenPoints;
+                        },
+                    },
+                    y: {
+                        type: "number",
+                        easing: "linear",
+                        duration: delayBetweenPoints,
+                        from: previousY,
+                        delay(ctx) {
+                            if (ctx.type !== "data" || ctx.yStarted) {
+                                return 0;
+                            }
+                            ctx.yStarted = true;
+                            return ctx.index * delayBetweenPoints;
+                        },
+                    },
+                };
+                const config = {
+                    type: "line",
+                    data: {
+                        datasets: [
+                            {
+                                label: "Cukoo🐦   ",
+                                borderColor: "red",
+                                borderWidth: 2,
+                                radius: 0,
+                                data: data,
+                                backgroundColor: "red",
+                            },
+                            {
+                                label: "Host🦉",
+                                borderColor: "blue",
+                                borderWidth: 2,
+                                radius: 0,
+                                data: data2,
+                                backgroundColor: "blue",
+                            },
+                        ],
+                    },
+                    options: {
+                        animation,
+                        interaction: {
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        size: 32
+                                    }
+                                }
+                            },
+                        },
+                        scales: {
+                            x: {
+                                type: "linear",
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Generations',
+                                    font: {
+                                        size: 32
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Skill',
+                                    font: {
+                                        size: 32
+                                    }
+                                }
+                            }
+                        },
+                    },
+                };
+                let chart;
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'a') {
+                        const { localData, localData2 } = generateData(100000);
+                        config.data.datasets[0].data = localData;
+                        config.data.datasets[1].data = localData2;
+                        const ctx = document.getElementById("myAnimatedChart").getContext("2d");
+                        chart = new Chart(ctx, config);
+                    } else if (event.key === 'z') {
+                        const { localData, localData2 } = generateData(200);
+                        config.data.datasets[0].data = localData;
+                        config.data.datasets[1].data = localData2;
+                        const ctx = document.getElementById("myAnimatedChart2").getContext("2d");
+                        chart = new Chart(ctx, config);
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <script src="slides/dist/reveal.js"></script>
+    <script src="slides/plugin/notes/notes.js"></script>
+    <script src="slides/plugin/markdown/markdown.js"></script>
+    <script src="slides/plugin/highlight/highlight.js"></script>
+    <script src="slides/plugin/search/search.js"></script>
+    <script src="slides/plugin/zoom/zoom.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controlsTutorial: false,
+            progress: false,
+            slideNumber: 'c',
+            loop: true,
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealZoom, RevealChart]
+        });
+    </script>
+</body>
+
+</html>
