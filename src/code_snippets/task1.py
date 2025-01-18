@@ -24,3 +24,9 @@ bpy.context.scene.render.resolution_x = 100
 bpy.context.scene.render.resolution_y = 100
 bpy.context.scene.render.filepath = '/path/to/render.png'
 bpy.ops.render.render(write_still=True)
+
+# Useful commands
+import random
+random.randint(0, 10) # Random integer between 0 and 10
+random.uniform(-3, 3) # Random float between -3 and 3
+random.choice(['red', 'green', 'blue']) # Random choice from the list

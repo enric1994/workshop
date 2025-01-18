@@ -17,16 +17,13 @@ for i in range(30):
         # Randomize the imported object
         imported_object = bpy.context.selected_objects[0]
         imported_object.location = (random.uniform(-12,12), random.uniform(-12,12), random.uniform(-12,12))
-        imported_object.rotation_euler = (random.uniform(-1.7,-1), random.uniform(-0.5,0.5), random.uniform(-2,2))
+        imported_object.rotation_euler = (random.uniform(-2, 2), random.uniform(-2, 2), random.uniform(-2, 2))
         scale = random.uniform(7,9)
-        if animal == "giraffe":
-            scale -=4
         imported_object.scale = (scale, scale, scale)
 
     # Add a camera
     bpy.ops.object.camera_add(location=(0, -50, 0), rotation=(3.14 / 2, 0, 0))
     bpy.context.scene.camera = bpy.context.active_object
-    #bpy.context.scene.camera.data.lens = 18
 
     # Add a light
     for _ in range(4):
