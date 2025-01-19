@@ -171,15 +171,7 @@ bpy.context.scene.render.filepath = '/path/to/render.png'
 bpy.ops.render.render(write_still=True)
                     </code></pre>
                 </section>
-                <section data-auto-animate>
-                    <h2>Useful commands</h2>
-                    <pre data-id="code-animation"><code class="hljs python" style="font-size: 0.6em;">
-import random
-random.randint(0, 10) # Random integer between 0 and 10
-random.uniform(-3, 3) # Random float between -3 and 3
-random.choice(['red', 'green', 'blue']) # Random choice from the list
-                    </code></pre>
-                </section>
+                
                 <section data-auto-animate>
                     <h3>Task 1: Hello Blender</h3>
                     <ul>
@@ -195,6 +187,21 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                         </ul>
                     </ul>
                     <img src="slides/images/sample_dataset.png" height="200">
+                </section>
+                <section data-auto-animate>
+                    <h3>Task 1: Hello Blender</h3>
+                    <ul>
+                        <li>Save regularly to prevent losing your work</li>
+                        <li>Keep the resolution low to speed up the rendering</li>
+                        <li>Use the <strong>random</strong> built-in package:</li>
+                    </ul>
+                    <pre data-id="code-animation"><code class="hljs python" style="font-size: 0.6em;">
+import random
+random.randint(0, 10) # Random integer between 0 and 10
+random.uniform(-3, 3) # Random float between -3 and 3
+random.choice(['red', 'green', 'blue']) # Random choice from the list
+                    </code></pre>
+                    <br>
                 </section>
             </section>
             <section>
@@ -323,7 +330,7 @@ for block in bpy.data.images:
         bpy.data.images.remove(block)
                                             </code></pre>
                 </section>
-                <section>
+                <section data-auto-animate>
                     <h3>Task 2: Savanna dataset</h3>
                     <ul>
                         <li>Create a dataset of 30 images</li>
@@ -341,6 +348,10 @@ for block in bpy.data.images:
                         and <a
                             href="https://drive.google.com/file/d/1SF07c6ms3Vcajm0kFn0CQFxseqHC4rqd/view?usp=sharing">3D
                             models</a></p>
+                </section>
+                <section data-auto-animate>
+                    <h3>Task 2: Savanna dataset</h3>
+                    <p>Send your favourite images to <a href="mailto:workshop@enricmor.eu">workshop@enricmor.eu</a></p>
                 </section>
             </section>
             <section>
@@ -725,7 +736,16 @@ for block in bpy.data.images:
                         translation using cycle-consistent adversarial networks." Proceedings of the IEEE international
                         conference on computer vision 2017-Octob. 2017.</cite>
                 </section>
-                <section>
+                <section data-auto-animate>
+                    <h2>CycleGAN</h2>
+                    <img src="slides/images/cyclegan_1.png" height="200">
+                    <br>
+                    <br>
+                    <cite style="position:fixed; bottom: 1%; left: 1%;">Zhu, Jun-Yan, et al. "Unpaired image-to-image
+                        translation using cycle-consistent adversarial networks." Proceedings of the IEEE international
+                        conference on computer vision 2017-Octob. 2017.</cite>
+                </section>
+                <section data-auto-animate>
                     <h2>CycleGAN</h2>
                     <img src="slides/images/cyclegan.png" height="400">
                     <br>
