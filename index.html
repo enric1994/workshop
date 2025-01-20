@@ -197,6 +197,7 @@ bpy.ops.render.render(write_still=True)
                     </ul>
                     <pre data-id="code-animation"><code class="hljs python" style="font-size: 0.6em;">
 import random
+
 random.randint(0, 10) # Random integer between 0 and 10
 random.uniform(-3, 3) # Random float between -3 and 3
 random.choice(['red', 'green', 'blue']) # Random choice from the list
@@ -227,11 +228,10 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                     </div>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>3D environment</h2>
                     <div class="r-hstack">
                         <div>
                             <img src="slides/images/3d_env.png" height="400">
-                            <p>3D environment</p>
                         </div>
                     </div>
                     <cite style="position:fixed; bottom: 1%; left: 1%;">Community, B. O. (2018). Blender - a 3D
@@ -239,7 +239,7 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                             href="http://www.blender.org" target="_blank">http://www.blender.org</a></cite>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>3D model</h2>
                     <div class="r-hstack">
                         <div>
                             <iframe title="Little Blue Penguin / Kororā" frameborder="0" allowfullscreen
@@ -248,7 +248,6 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                                 execution-while-out-of-viewport execution-while-not-rendered web-share height="437"
                                 src="https://sketchfab.com/models/8a58020139cf43bc821bfdfa01e13208/embed?dnt=1">
                             </iframe>
-                            <p>3D model</p>
                         </div>
                     </div>
                     <cite style="position:fixed; bottom: 1%; left: 42%;">Source: <a
@@ -256,16 +255,15 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                             target="_blank">Sketchfab</a></cite>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>3D model</h2>
                     <iframe src="https://clara.io/library" width="100%" height="600px" frameborder="0"
                         allowfullscreen></iframe>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>Background image</h2>
                     <div class="r-hstack">
                         <div>
                             <img src="slides/images/background.png" height="400">
-                            <p>Background image</p>
                         </div>
                     </div>
                     <cite style="position:fixed; bottom: 1%; left: 1%;">Zhou, B., Lapedriza, A., Khosla, A., Oliva, A.,
@@ -274,12 +272,11 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
                             Analysis and Machine Intelligence.</em></cite>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>Lighting and camera parameters</h2>
                     <img src="slides/images/people1.png" height="400">
-                    <p>Lighting and camera parameters</p>
                 </section>
                 <section data-auto-animate>
-                    <h2>3D-based synthetic data</h2>
+                    <h2>Loading assets in Blender</h2>
                     <pre data-id="code-animation"><code class="hljs python" data-trim data-line-numbers="|5-10|16-32|38-47" style="font-size: 0.6em;">
 import bpy
 # Delete all objects
@@ -506,38 +503,42 @@ for epoch in range(num_epochs):
 
             </section>
 
+            <section>
+                <h2>End of Day 1</h2>
+            </section>
+
             <!-- Day 2 -->
             <section>
                 <section data-auto-animate>
                     <h2>Recap of Day 1</h2>
                     <div class="image-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;">
-                        <div>
+                        <div class="fragment">
                             <img src="slides/images/GTAV.jpg" alt="GTAV" height="200"
                                 style="border-radius: 50%; object-fit: cover; width: 200px;">
                             <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Introduction to
                                 synthetic data</p>
                         </div>
-                        <div>
+                        <div class="fragment">
                             <img src="slides/images/sample_dataset.png" alt="Blender Dataset" height="200"
                                 style="border-radius: 50%; width: 200px;">
                             <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Hello Blender </p>
                         </div>
-                        <div>
+                        <div class="fragment">
                             <img src="slides/images/savanna.png" alt="Savanna Dataset" height="200"
                                 style="border-radius: 50%; width: 200px;">
                             <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna dataset</p>
                         </div>
-                        <div>
+                        <div class="fragment">
                             <img src="slides/images/pytorch.png" alt="Pytorch" height="200"
                                 style="border-radius: 50%; width: 200px;">
-                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna classifier</p>
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Image  classifier</p>
                         </div>
                     </div>
                 </section>
                 <section>
                     <h2>Day 2</h2>
                     <ol>
-                        <li>Training a polyp segmentation model</li>
+                        <li>Training a segmentation model</li>
                         <li>Domain randomization</li>
                         <li>Domain adaptation</li>
                     </ol>
