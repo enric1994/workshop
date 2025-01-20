@@ -38,7 +38,7 @@
                         <li>Introduction to synthetic data</li>
                         <li>Blender basics</li>
                         <li>3D-based synthetic data</li>
-                        <li>Polyp segmentation with synthetic data</li>
+                        <li>Training a classifier</li>
                     </ol>
                 </section>
             </section>
@@ -148,7 +148,7 @@
                 </section>
                 <section data-auto-animate>
                     <h2>Blender basics</h2>
-                    <pre data-id="code-animation"><code class="hljs python" data-trim data-line-numbers="|1|3,4,5|7,8,9|11,12,13|15,16,17|19,20" style="font-size: 0.6em;">
+                    <pre data-id="code-animation"><code class="hljs python" data-trim data-line-numbers="|1|2,3,4|5,6,7|8,9,10|11,12,13|14,15|16,17,18,19,20" style="font-size: 0.6em;">
 import bpy
 # Delete all objects
 bpy.ops.object.select_all(action='SELECT')
@@ -207,22 +207,22 @@ random.choice(['red', 'green', 'blue']) # Random choice from the list
             <section>
                 <section>
                     <h2>3D-based synthetic data</h2>
-                    <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                            3D environment
+                    <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
+                        <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                            <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                3D environment
+                            </div>
+                            <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                3D model
+                            </div>
                         </div>
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                            3D model
-                        </div>
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                            Background image
-                        </div>
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                            Lighting and camera
+                        <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                            <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                Background image
+                            </div>
+                            <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                Lighting and camera
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -351,30 +351,210 @@ for block in bpy.data.images:
                 </section>
                 <section data-auto-animate>
                     <h3>Task 2: Savanna dataset</h3>
-                    <p>Send your favourite images to <a href="mailto:workshop@enricmor.eu">workshop@enricmor.eu</a></p>
+                    <p>Send your best <em>synthetic</em> images to <a href="mailto:workshop@enricmor.eu">workshop@enricmor.eu</a></p>
                 </section>
             </section>
             <section>
                 <section>
-                    <h2>Training a classifier with synthetic data</h2>
+                    <h2>Training a model with Pytorch</h2>
+                <div style="display: flex; flex-direction: row; gap: 40px; justify-content: center; flex-wrap: wrap;">
+                    <div
+                    style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                    Dataset
+                </div>
+                <div
+                    style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                    Data splitting
+                </div>
+                    <div
+                        style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        DataLoader
+                    </div>
+                    <div
+                        style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        Model
+                    </div>
+                    <div
+                        style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        Optimizer
+                    </div>
+                    <div
+                        style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        Training loop
+                    </div>
+                </div>
+                </section>
+
+                <section>
+                    <h2>Dataset</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+import torch
+from torch.utils.data import Dataset
+
+class MyDataset(Dataset):
+    def __init__(self):
+        super().__init__()
+        self.images = torch.randn(1000, 3, 256, 256)
+        self.labels = torch.randint(0, 2, (1000,))
+    
+    def __getitem__(self, index):
+        return self.images[index], self.labels[index]
+    
+    def __len__(self):
+        return len(self.images)
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Data Splitting</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+from torch.utils.data import random_split
+
+dataset = MyDataset()
+train_size = int(0.8 * len(dataset))
+val_size = len(dataset) - train_size
+
+train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>DataLoader</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+from torch.utils.data import DataLoader
+
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=4)
+val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=4)
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h2>Model</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+import torchvision
+import torch.nn as nn
+
+model = torchvision.models.resnet18()
+model.fc = nn.Linear(model.fc.in_features, 3)
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h2>Model</h2>
+                    <iframe src="https://pytorch.org/vision/0.9/models.html" width="100%" height="600" style="border:none;"></iframe>
+                </section>
+                <section data-auto-animate>
+                    <h2>Optimizer</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+import torch.optim as optim            
+optimizer = optim.SGD(model.parameters(), lr=1e-3)
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h2>Optimizer</h2>
+                    <img src="slides/images/desert.jpeg" height="300">
+                </section>
+                <section data-auto-animate>
+                    <h2>Optimizer</h2>
+                    <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                        <img src="slides/images/desert.jpeg" height="300">
+                        <img src="slides/images/grad_desc.png" height="300">
+                    </div>
+                <cite style="position:fixed; bottom: 1%; left: 1%;">Amini, Alexander, et al. "Spatial uncertainty sampling for end-to-end control." arXiv preprint arXiv:1805.04829 (2018).</cite>
+                </section>
+                <section data-auto-animate>
+                    <h2>Loss</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+import torch.nn as nn
+
+criterion = nn.CrossEntropyLoss()
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h2>Loss</h2>
+                <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
+                    <img src="slides/images/crowd.jpg" height="300">
+                    <img src="slides/images/supermarket.png" height="300">
+                </div>
+                </section>
+                <section>
+                    <h2>Training loop</h2>
+                    <pre><code class="hljs python" style="font-size: 0.6em;">
+model.train()
+num_epochs = 5
+
+for epoch in range(num_epochs):
+    for batch_data, batch_labels in train_loader:
+        outputs = model(batch_data)
+        loss = criterion(outputs, batch_labels)
+        
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Task 3: Train a classifier</h3>
+                    <p>Complete the missing components:</p>
+                    <ul>
+                        <li>Model</li>
+                        <li>Optimizer</li>
+                    </ul>
+                    <br>
+                    <br>
                     <p><a href="https://drive.google.com/file/d/1sGEv5vbsuaHOphSAVkg3oGCb5Pm7jRde/view?usp=sharing"
-                            target="_blank">Demo notebook</a></p>
+                            target="_blank">Notebook</a></p>
+                </section>
+
+
+            </section>
+
+            <!-- Day 2 -->
+            <section>
+                <section data-auto-animate>
+                    <h2>Recap of Day 1</h2>
+                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;">
+                        <div>
+                            <img src="slides/images/GTAV.jpg" alt="GTAV" height="200"
+                                style="border-radius: 50%; object-fit: cover; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Introduction to
+                                synthetic data</p>
+                        </div>
+                        <div>
+                            <img src="slides/images/sample_dataset.png" alt="Blender Dataset" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Hello Blender </p>
+                        </div>
+                        <div>
+                            <img src="slides/images/savanna.png" alt="Savanna Dataset" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna dataset</p>
+                        </div>
+                        <div>
+                            <img src="slides/images/pytorch.png" alt="Pytorch" height="200"
+                                style="border-radius: 50%; width: 200px;">
+                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna classifier</p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Day 2</h2>
+                    <ol>
+                        <li>Training a polyp segmentation model</li>
+                        <li>Domain randomization</li>
+                        <li>Domain adaptation</li>
+                    </ol>
                 </section>
             </section>
+
             <section>
                 <section>
                     <h2>Training a segmentation model</h2>
                     <div style="display: flex; flex-direction: row; gap: 10px; justify-content: center;">
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
                             Model
                         </div>
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
                             Train data
                         </div>
-                        <div
-                            style="padding: 10px; border-radius: 50%; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                        <div style="padding: 10px; border-radius: 10px; text-align: center; width: 200px; height: 200px; font-size: 0.7em; color: rgb(0, 0, 0); background-color: #ffffff; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
                             Test data
                         </div>
                     </div>
@@ -428,71 +608,18 @@ for block in bpy.data.images:
                         2020.</cite>
                 </section>
                 <section>
-                    <h3>Task 3: Synthetic polyp segmentation</h3>
+                    <h3>Task 4: Synthetic polyp segmentation</h3>
                     <p>Improve the following components:</p>
                     <ul>
                         <li>Model</li>
-                        <li>Loss function</li>
                         <li>Optimizer</li>
+                        <li>Loss function</li>
                     </ul>
                     <p><a href="https://drive.google.com/file/d/1SRRx_j_4pk98PLF3rUX6owI2r42nea3E/view?usp=sharing"
                             target="_blank">Notebook</a></p>
                 </section>
             </section>
-            <!-- Day 2 -->
-            <section>
-                <section data-auto-animate>
-                    <h2>Recap of Day 1</h2>
-                    <div class="image-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;">
-                        <div>
-                            <img src="slides/images/GTAV.jpg" alt="GTAV" height="200"
-                                style="border-radius: 50%; object-fit: cover; width: 200px;">
-                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Introduction to
-                                synthetic data</p>
-                        </div>
-                        <div>
-                            <img src="slides/images/sample_dataset.png" alt="Blender Dataset" height="200"
-                                style="border-radius: 50%; width: 200px;">
-                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Hello Blender </p>
-                        </div>
-                        <div>
-                            <img src="slides/images/savanna.png" alt="Savanna Dataset" height="200"
-                                style="border-radius: 50%; width: 200px;">
-                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Savanna dataset</p>
-                        </div>
-                        <div>
-                            <img src="slides/images/synth-colon-img.png" alt="Synth Colon" height="200"
-                                style="border-radius: 50%; width: 200px;">
-                            <p style="text-align: center; margin-top: -20px; font-size: 0.7em;">Synthetic polyp
-                                segmentation</p>
-                        </div>
-                    </div>
-                </section>
-                <section data-auto-animate>
-                    <h2>Recap of Day 1</h2>
-                    <br>
-                    <br>
-                    <div class="r-hstack">
-                        <div>
-                            <img src="slides/images/synth-colon-img.png" alt="Synth Colon" height="256">
-                        </div>
-                        <div style="font-size: 100px; display: flex; align-items: center; justify-content: center;">
-                            &rarr;
-                        </div>
-                        <div>
-                            <img src="slides/images/kvasir-img.jpg" alt="Kvasir-SEG" height="256">
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h2>Day 2</h2>
-                    <ol>
-                        <li>Domain randomization</li>
-                        <li>Domain adaptation</li>
-                        <li>Discussion</li>
-                    </ol>
-                </section>
-            </section>
+            
             <section data-auto-animate>
                 <section data-auto-animate>
                     <h2 data-id="domain-randomization">Domain randomization</h2>
@@ -578,14 +705,18 @@ for block in bpy.data.images:
                         <h2>Style transfer</h2>
                     </div>
                 </section>
-                <section>
-                    <h3>Task 4: Stylize the Savanna dataset</h3>
+                <section data-auto-animate>
+                    <h3>Task 5: Stylize the Savanna dataset</h3>
                     <ul>
                         <li>Try multiple styles</li>
                         <li>Find a good balance between style and content</li>
                     </ul>
                     <p><a href="https://drive.google.com/file/d/1NrzJm1he1W8rh2IIGgV2QOH61JmJnxpa/view?usp=sharing"
                             target="_blank">Notebook</a></p>
+                </section>
+                <section data-auto-animate>
+                    <h3>Task 5: Stylize the Savanna dataset</h3>
+                    <p>Send your best <em>stylized</em> images to <a href="mailto:workshop@enricmor.eu">workshop@enricmor.eu</a></p>
                 </section>
             </section>
             <!-- Domain adaptation -->
@@ -755,10 +886,11 @@ for block in bpy.data.images:
                         conference on computer vision 2017-Octob. 2017.</cite>
                 </section>
                 <section>
-                    <h3>Task 5: Synthetic polyp segmentation with domain adaptation</h3>
+                    <h3>Task 6: Synthetic polyp segmentation with domain adaptation</h3>
                     <ul>
                         <li>Apply data augmentation to the train dataset</li>
                         <li>Use the CycleGAN-adapted synthetic images</li>
+                        <li>Select a model, optimizer and loss function</li>
                     </ul>
                     <div class="r-hstack">
                         <div>
